@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+	background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+
+
+}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        <h2>Your Selection:</h2>
+        <p>Hour: {{ hour }}</p>
+        <p>Junction: {{ junction }}</p>
+        <p>Day: {{ day }}</p>
+        <p>Month: {{ month }}</p>
+        <p>Predicted Traffic: {{ prediction }}</p>
+
+        <h2>Traffic for Other Junctions:</h2>
+        {% for junction, traffic in other_junctions.items() %}
+            <p>{{ junction }}: {{ traffic }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
